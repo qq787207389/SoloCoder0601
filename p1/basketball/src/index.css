@@ -1,0 +1,157 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+body {
+  font-family: '"Press Start 2P"', cursive;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f0f23 100%);
+  image-rendering: pixelated;
+  -webkit-font-smoothing: none;
+}
+
+@layer components {
+  .pixel-btn {
+    @apply relative px-6 py-4 text-white font-pixel text-sm transition-all duration-100;
+    @apply border-4 border-b-8 border-r-8 border-pixel-darker;
+    @apply active:border-b-4 active:border-r-4 active:translate-y-1 active:translate-x-1;
+    text-shadow: 2px 2px 0 #000;
+    image-rendering: pixelated;
+  }
+
+  .pixel-btn-red {
+    @apply pixel-btn;
+    background: linear-gradient(180deg, #FF6666 0%, #CC2222 100%);
+    box-shadow: inset -4px -4px 0 #AA1111, inset 4px 4px 0 #FF8888;
+  }
+
+  .pixel-btn-red:hover {
+    background: linear-gradient(180deg, #FF8888 0%, #DD3333 100%);
+  }
+
+  .pixel-btn-blue {
+    @apply pixel-btn;
+    background: linear-gradient(180deg, #6688FF 0%, #2244CC 100%);
+    box-shadow: inset -4px -4px 0 #1122AA, inset 4px 4px 0 #88AAFF;
+  }
+
+  .pixel-btn-blue:hover {
+    background: linear-gradient(180deg, #88AAFF 0%, #3355DD 100%);
+  }
+
+  .pixel-btn-green {
+    @apply pixel-btn;
+    background: linear-gradient(180deg, #66DD66 0%, #22AA22 100%);
+    box-shadow: inset -4px -4px 0 #118811, inset 4px 4px 0 #88FF88;
+  }
+
+  .pixel-btn-green:hover {
+    background: linear-gradient(180deg, #88FF88 0%, #33BB33 100%);
+  }
+
+  .pixel-panel {
+    @apply bg-pixel-dark border-4 border-pixel-darker;
+    box-shadow: 
+      inset -4px -4px 0 #111,
+      inset 4px 4px 0 #444,
+      8px 8px 0 rgba(0,0,0,0.5);
+  }
+
+  .pixel-text {
+    font-family: '"Press Start 2P"', cursive;
+    text-shadow: 2px 2px 0 #000;
+    image-rendering: pixelated;
+  }
+
+  .crt-scanlines {
+    position: relative;
+  }
+
+  .crt-scanlines::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.15),
+      rgba(0, 0, 0, 0.15) 1px,
+      transparent 1px,
+      transparent 2px
+    );
+    pointer-events: none;
+  }
+
+  .pixel-border {
+    border: 4px solid #222;
+    box-shadow: 
+      4px 4px 0 #111,
+      inset 2px 2px 0 #555;
+  }
+
+  .glow-red {
+    animation: glowRed 1s ease-in-out infinite alternate;
+  }
+
+  .glow-blue {
+    animation: glowBlue 1s ease-in-out infinite alternate;
+  }
+
+  @keyframes glowRed {
+    from { box-shadow: 0 0 10px #FF4444, 0 0 20px #FF444444; }
+    to { box-shadow: 0 0 20px #FF8800, 0 0 40px #FF880066; }
+  }
+
+  @keyframes glowBlue {
+    from { box-shadow: 0 0 10px #4488FF, 0 0 20px #4488FF44; }
+    to { box-shadow: 0 0 20px #44AAFF, 0 0 40px #44AAFF66; }
+  }
+
+  .shake {
+    animation: shake 0.3s ease-in-out;
+  }
+
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+  }
+
+  .bounce-in {
+    animation: bounceIn 0.5s ease-out;
+  }
+
+  @keyframes bounceIn {
+    0% { transform: scale(0); opacity: 0; }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); opacity: 1; }
+  }
+
+  .number-pop {
+    animation: numberPop 0.3s ease-out;
+  }
+
+  @keyframes numberPop {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.5); }
+    100% { transform: scale(1); }
+  }
+}
+
+canvas {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}

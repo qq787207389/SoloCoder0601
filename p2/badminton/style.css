@@ -1,0 +1,40 @@
+:root {
+  --court-green: #1a4d2e;
+  --line-white: #ffffff;
+  --player-red: #e74c3c;
+  --ai-blue: #3498db;
+  --ball-yellow: #f1c40f;
+  --net-gray: #95a5a6;
+  --bg-dark: #0a1612;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  background: var(--bg-dark);
+  font-family: 'Press Start 2P', cursive;
+  overflow: hidden;
+}
+
+#app {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#gameCanvas {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  border: 4px solid #2c3e50;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5),
+              0 0 60px rgba(26, 77, 46, 0.3);
+  background: var(--court-green);
+}
